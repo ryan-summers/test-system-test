@@ -6,7 +6,7 @@ pipeline {
         stage('Tests') {
             steps {
                 git 'https://github.com/ryan-summers/test-system-test.git'
-                copyArtifacts(projectName: 'Automated Build', selection: upstream)
+                copyArtifacts(projectName: 'Automated Build', selector: upstream)
                 sh 'python test_scripts/run_tests.py unit' > unit_tests.xml
                 sh 'python test_scripts/run_tests.py integration ' > integration_tests.xml
                 sh 'python test_scripts/run_tests.py regression' > regression_tests.xml
