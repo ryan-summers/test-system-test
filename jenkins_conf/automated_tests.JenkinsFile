@@ -8,9 +8,9 @@ pipeline {
                 git 'https://github.com/ryan-summers/test-system-test.git'
                 sh 'printenv'
                 copyArtifacts projectName: 'Automated Build', selector: specific("${BUILD_SELECTOR_NUMBER}")
-                sh 'python test_scripts/run_tests.py unit' > unit_tests.xml
-                sh 'python test_scripts/run_tests.py integration ' > integration_tests.xml
-                sh 'python test_scripts/run_tests.py regression' > regression_tests.xml
+                sh 'python test_scripts/run_tests.py unit > unit_tests.xml'
+                sh 'python test_scripts/run_tests.py integration > integration_tests.xml'
+                sh 'python test_scripts/run_tests.py regression > regression_tests.xml'
             }
         }
     }
