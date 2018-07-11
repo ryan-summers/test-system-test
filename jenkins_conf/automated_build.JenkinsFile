@@ -6,7 +6,7 @@ pipeline {
         stage('Source') {
             steps {
                 git 'https://github.com/ryan-summers/source-repo-test.git'
-                make
+                sh 'make'
                 archiveArtifacts artifacts: 'build/*'
             }
         }
@@ -14,7 +14,7 @@ pipeline {
         stage ('Tests') {
             steps {
                 git 'https://github.com/ryan-summers/test-system-test.git'
-                make
+                sh 'make'
                 archiveArtifacts artifacts: 'build/**/*'
             }
         }
