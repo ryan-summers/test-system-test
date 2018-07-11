@@ -1,7 +1,8 @@
 pipeline {
+
     agent any
 
-    stage {
+    stages {
         stage('Source') {
             git 'https://github.com/ryan-summers/source-repo-test.git'
             make
