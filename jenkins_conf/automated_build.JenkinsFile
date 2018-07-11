@@ -4,15 +4,19 @@ pipeline {
 
     stages {
         stage('Source') {
-            git 'https://github.com/ryan-summers/source-repo-test.git'
-            make
-            archiveArtifacts artifacts: 'build/*'
+            steps {
+                git 'https://github.com/ryan-summers/source-repo-test.git'
+                make
+                archiveArtifacts artifacts: 'build/*'
+            }
         }
 
         stage ('Tests') {
-            git 'https://github.com/ryan-summers/test-system-test.git'
-            make
-            archiveArtifacts artifacts: 'build/**/*'
+            steps {
+                git 'https://github.com/ryan-summers/test-system-test.git'
+                make
+                archiveArtifacts artifacts: 'build/**/*'
+            }
         }
     }
 }
