@@ -1,0 +1,24 @@
+pipeline {
+
+    agent any
+
+    stages {
+        stage('Tests') {
+            steps {
+                git 'https://github.com/ryan-summers/test-system-test.git'
+                copyArtifacts(projectName: 'Automated Build', selection: upstream)
+                sh 'python test_scripts/run_tests.py unit' > unit_tests.xml
+                sh 'python test_scripts/run_tests.py integration ' > integration_tests.xml
+                sh 'python test_scripts/run_tests.py regression' > regression_tests.xml
+            }
+        }
+    }
+
+    post {
+        success {
+            junit 'unit_tests.xml'
+            junit 'integration_tests.xml'
+            junit 'regression_tests.xml'
+        }
+    }
+}
