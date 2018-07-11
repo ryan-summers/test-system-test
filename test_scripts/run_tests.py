@@ -3,6 +3,7 @@
 from lxml import etree
 import argparse
 import glob
+import subprocess
 
 
 if __name__ == '__main__':
